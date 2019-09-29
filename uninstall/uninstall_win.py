@@ -5,30 +5,43 @@ Created on Sat Aug 31 22:17:15 2019
 @author: Ampofo
 """
 
-from subprocess import check_output
+import subprocess
 import os
 import sys
 
-class WinUninstall():
+class Uninstaller():
 
 
-    def __init__(self):
+    def __init__(self, parent_folder, passcode, mysql_path):
         super.__init__
-        self.install_path = "C:\\Deuteronomy\\Peter"
+        self.install_path = parent_folder + '/bin'
         main_dir = os.path.dirname(sys.argv[0])
-        self.passcode = 'ampofo1'
+        self.passcode = passcode
+        self.mysql_path = parent_folder + "/" + mysql_path
+        print(self.mysql_path)
         self.main = main_dir.replace('\\install', '')
-        self.service = ['PeterWebServer', 'MySQL573']
-        self.uninstall_mysql_serv()
-        self.del_files()
+
+    def stop_server(self):
+
+        cmd = '"' + self.mysql_path + 'mysqladmin" -u root --password=' + self.passcode + ' shutdown'
+
+        out = subprocess.Popen(cmd,
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.STDOUT,
+                         shell=True)
 
     def del_files(self):
 
-        cmd1 = 'DEL /Q ' + self.main + '\\php' + "\\*.*"
-        cmd2 = 'DEL /Q ' + self.main + '\\mysql' + '\\*.*'
+        cmd1 = 'RD /S /Q "' + self.install_path + '/php' + '"'
+        cmd2 = 'RD /S /Q "' + self.install_path + '/mysql' + '"'
+        cmd3 = 'RD /S /Q "' + self.install_path + '"'
 
-        out1 = check_output(cmd1 + ' /E /Y', shell=True)
-        out2 = check_output(cmd2 + ' /E /Y', shell=True)
+        out1 = subprocess.Popen(cmd1, shell=True)
+        print(out1.communicate()[0])
+        out2 = subprocess.Popen(cmd2, shell=True)
+        print(out2.communicate()[0])
+        out3 = subprocess.Popen(cmd3, shell=True)
+        print(out3.communicate()[0])
 
     def uninstall_mysql_serv(self):
 
@@ -36,4 +49,4 @@ class WinUninstall():
         out1 = check_output(cmd, shell=True)
 
 
-WinUninstall()
+#WinUninstall()
