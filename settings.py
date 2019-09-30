@@ -8,7 +8,7 @@ import os
 import json
 import base64
 
-class Sets():
+class Setts():
 
 
     def __init__(self):

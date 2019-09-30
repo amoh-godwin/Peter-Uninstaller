@@ -23,9 +23,10 @@ class Uninstaller():
 
     def stop_server(self):
 
-        cmd = '"' + self.mysql_path + 'mysqladmin" -u root --password=' + self.passcode + ' shutdown'
+        cmd = '"' + self.mysql_path + 'mysqladmin" -u root --password='\
+        + self.passcode + ' shutdown'
 
-        out = subprocess.Popen(cmd,
+        subprocess.Popen(cmd,
                          stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT,
                          shell=True)
@@ -37,11 +38,8 @@ class Uninstaller():
         cmd3 = 'RD /S /Q "' + self.install_path + '"'
 
         out1 = subprocess.Popen(cmd1, shell=True)
-        print(out1.communicate()[0])
         out2 = subprocess.Popen(cmd2, shell=True)
-        print(out2.communicate()[0])
         out3 = subprocess.Popen(cmd3, shell=True)
-        print(out3.communicate()[0])
 
     def uninstall_mysql_serv(self):
 
