@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
 import sys
-from settings import Sets
-from uninstall.uninstall_win import Uninstaller
+from PyQt5.QtGui import QGuiApplication
+from PyQt5.QtQml import QQmlApplicationEngine
 
-setts = Sets()
-Uninst = Uninstaller(setts.parent_folder, setts.passcode, setts.server[1]['path'])
+app = QGuiApplication(sys.argv)
 
+engine = QQmlApplicationEngine()
 
-Uninst.stop_server()
+engine.rootContext().setContextProperty()
 
-Uninst.del_files()
+engine.load('')
 
-sys.exit(0)
+engine.quit.connect(app.quit)
+
+sys.exit(app.exec_())
