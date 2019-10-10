@@ -14,7 +14,7 @@ settings = QSettings()
 
 os.environ["QT_QUICK_CONTROLS_STYLE"] = "Universal"
 app = QGuiApplication(sys.argv)
-app.setWindowIcon(QIcon(":UI/images/img102.jpg"))
+app.setWindowIcon(QIcon(":UI/images/Peter.png"))
 
 connect = Connector()
 
