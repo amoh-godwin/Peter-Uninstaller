@@ -180,7 +180,6 @@ ApplicationWindow {
 
     Comp.Welcome {id: welcomeComp}
     Comp.Server {id: serverComp}
-    Comp.Finalising {id: finalComp}
 
     SwipeView {
         id: swipe
