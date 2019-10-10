@@ -34,7 +34,7 @@ Component {
                     spacing: 16
 
                     Text {
-                        text: qsTr("Installing Server")
+                        text: qsTr("Uninstalling Server")
                         font.family: "Segoe UI Semilight"
                         font.pixelSize: 14
                         color: "white"

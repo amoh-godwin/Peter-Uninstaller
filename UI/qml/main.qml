@@ -94,7 +94,7 @@ ApplicationWindow {
         showPrompt("exit", 'Are you sure you want to quit Setup')
     }
     onAcceptLincense:  {
-        stack.push(locationComp);
+        stack.push(serverComp);
     }
 
     onUseDefaultLocation: {
@@ -179,11 +179,7 @@ ApplicationWindow {
     }
 
     Comp.Welcome {id: welcomeComp}
-    Comp.Location {id: locationComp}
     Comp.Server {id: serverComp}
-    Comp.Authenticate {id: authComp}
-    Comp.MySql {id: mysqlComp}
-    Comp.Php {id: phpComp}
     Comp.Finalising {id: finalComp}
 
     SwipeView {

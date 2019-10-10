@@ -41,11 +41,11 @@ RowLayout {
                     height: parent.height
 
                     TabButton {
-                        text: qsTr("Welcome")
+                        text: qsTr("Confirmmation")
                     }
 
                     TabButton {
-                        text: qsTr("Location")
+                        text: qsTr("Uninstalling")
                     }
 
                     TabButton {
