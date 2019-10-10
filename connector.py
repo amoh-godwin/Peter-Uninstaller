@@ -3,16 +3,16 @@ import threading
 from time import sleep
 import platform
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
+
 from settings import Setts
 
-if platform.system() == 'Windows':
+if platform.system() == "Windows":
     from uninstall import uninstall_win as uninstall_mod
-
 
 class Connector(QObject):
 
-    """
-    """
+    #
+    #
 
     def __init__(self):
         QObject.__init__(self)
@@ -20,6 +20,7 @@ class Connector(QObject):
         self.Uninst = uninstall_mod.Uninstaller(self.setts.parent_folder,
                                                 self.setts.passcode,
                                                 self.setts.server[1]['path'])
+
 
     update = pyqtSignal(int, arguments=['updater'])
     done = pyqtSignal(int, arguments=['doner'])

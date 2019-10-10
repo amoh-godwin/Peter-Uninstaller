@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
-from PyQt5.QtCore import QCoreApplication, QSettings, QResource
+from PyQt5.QtCore import QResource
 from PyQt5.QtGui import QGuiApplication, QIcon
 from PyQt5.QtQml import QQmlApplicationEngine
 
-from connector import Connector 
+from connector import Connector
 
 QResource.registerResource('uninstall.rcc')
-QCoreApplication.setOrganizationName("Deuteronomy Works")
-QCoreApplication.setApplicationName("Peter Uninstaller")
-settings = QSettings()
 
 os.environ["QT_QUICK_CONTROLS_STYLE"] = "Universal"
 app = QGuiApplication(sys.argv)
