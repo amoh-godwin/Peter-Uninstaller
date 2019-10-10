@@ -110,7 +110,7 @@ ApplicationWindow {
     }
 
     onStartServerInstallation: {
-        Connector.start_server_install()
+        Connector.start_server_uninstall()
     }
     onStopServerInstallation: {
         showPrompt("rollback", "Are you sure you want to quit installation")

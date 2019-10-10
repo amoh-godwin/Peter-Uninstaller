@@ -20,6 +20,8 @@ class Uninstaller():
         self.mysql_path = parent_folder + "/" + mysql_path
         print(self.mysql_path)
         self.main = main_dir.replace('\\install', '')
+        self.stopped = False
+        self.deleted = True
 
     def stop_server(self):
 
@@ -30,6 +32,7 @@ class Uninstaller():
                          stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT,
                          shell=True)
+        self.stopped = True
 
     def del_files(self):
 
@@ -40,6 +43,8 @@ class Uninstaller():
         out1 = subprocess.Popen(cmd1, shell=True)
         out2 = subprocess.Popen(cmd2, shell=True)
         out3 = subprocess.Popen(cmd3, shell=True)
+        
+        self.deleted = True
 
     def uninstall_mysql_serv(self):
 

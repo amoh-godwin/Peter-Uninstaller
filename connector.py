@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import threading
+from time import sleep
 import platform
 from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
 from settings import Setts
@@ -19,6 +20,31 @@ class Connector(QObject):
         self.Uninst = uninstall_mod.Uninstaller(self.setts.parent_folder,
                                                 self.setts.passcode,
                                                 self.setts.server[1]['path'])
+
+    @pyqtSlot()
+    def start_server_uninstall(self):
+        st_t = threading.Thread(target=self._start_uninstall)
+        st_t.daemon = True
+        st_t.start()
+
+    def _start_uninstall(self):
+        self.stop_server()
+        print(10)
+        sleep(.3)
+        self.del_files(self)
+        sleep(.1)
+        print(30)
+        sleep(.1)
+        print(50)
+        sleep(.1)
+        print(70)
+        sleep(1)
+        print(100)
+        # check if all is well
+        while True:
+            if self.Uninst.stopped and self.Uninst.deleted:
+                break
+
 
     def stop_server(self):
         stop_t = threading.Thread(target=self._stop_server)
