@@ -29,7 +29,7 @@ Rectangle {
             Layout.fillHeight: true
             font.family: "Segoe UI Semilight"
             font.pixelSize: 14
-            text: qsTr("Setup Complete")
+            text: qsTr("Uninstallation Complete")
             color: "white"
         }
 
@@ -49,15 +49,6 @@ Rectangle {
 
                     onClicked: {
                         closeSetup();
-                    }
-
-                }
-
-                Button {
-                    text: qsTr("Launch Application")
-
-                    onClicked: {
-                        launchApplication();
                     }
 
                 }

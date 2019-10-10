@@ -268,11 +268,6 @@ ApplicationWindow {
             updatePercent(per)
         }
 
-        onUpdateLocation: {
-            var loc = updateLoc
-            stack.currentItem.location.text = loc
-        }
-
         onDone: {
             var level = doner
             if(level === 3) {

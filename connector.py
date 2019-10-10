@@ -21,6 +21,15 @@ class Connector(QObject):
                                                 self.setts.passcode,
                                                 self.setts.server[1]['path'])
 
+    update = pyqtSignal(int, arguments=['updater'])
+    done = pyqtSignal(int, arguments=['doner'])
+
+    def doner(self, lev):
+        self.done.emit(lev)
+
+    def updater(self, per):
+        self.update.emit(per)
+
     @pyqtSlot()
     def start_server_uninstall(self):
         st_t = threading.Thread(target=self._start_uninstall)
@@ -29,22 +38,22 @@ class Connector(QObject):
 
     def _start_uninstall(self):
         self.stop_server()
-        print(10)
+        self.updater(10)
         sleep(.3)
-        self.del_files(self)
+        self.del_files()
         sleep(.1)
-        print(30)
+        self.updater(30)
         sleep(.1)
-        print(50)
+        self.updater(50)
         sleep(.1)
-        print(70)
+        self.updater(70)
         sleep(1)
-        print(100)
+        self.updater(100)
         # check if all is well
         while True:
             if self.Uninst.stopped and self.Uninst.deleted:
                 break
-
+        self.doner(7)
 
     def stop_server(self):
         stop_t = threading.Thread(target=self._stop_server)
