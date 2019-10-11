@@ -277,6 +277,7 @@ ApplicationWindow {
                 proceedAfterPhpInstallation()
             } else if(level === 7) {
                 proceedAfterFinalising()
+                closeSetup()
             }
         }
     }

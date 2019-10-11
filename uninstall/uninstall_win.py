@@ -4,10 +4,11 @@ Created on Sat Aug 31 22:17:15 2019
 
 @author: Ampofo
 """
-
+import threading
 import subprocess
 import os
 import sys
+from time import sleep
 
 class Uninstaller():
 
@@ -36,6 +37,13 @@ class Uninstaller():
 
     def del_files(self):
 
+        d_thread = threading.Thread(target=self._del_files)
+        d_thread.daemon = False
+        d_thread.start()
+
+    def _del_files(self):
+
+        sleep(5)
         cmd1 = 'RD /S /Q "' + self.install_path + '/php' + '"'
         cmd2 = 'RD /S /Q "' + self.install_path + '/mysql' + '"'
         cmd3 = 'RD /S /Q "' + self.install_path + '"'

@@ -42,18 +42,15 @@ class Connector(QObject):
         self.updater(10)
         sleep(.3)
         self.del_files()
-        sleep(.1)
+        sleep(.2)
         self.updater(30)
-        sleep(.1)
+        sleep(.2)
         self.updater(50)
-        sleep(.1)
+        sleep(.3)
         self.updater(70)
-        sleep(1)
+        sleep(3)
         self.updater(100)
         # check if all is well
-        while True:
-            if self.Uninst.stopped and self.Uninst.deleted:
-                break
         self.doner(7)
 
     def stop_server(self):
